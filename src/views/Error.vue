@@ -1,7 +1,12 @@
 <template>
 	<div class="error">
 		<div class="content">
-			<span><i class="fas fa-exclamation-triangle"></i>Search Not Page</span>
+			<div class="inline-box title1">
+				<span><i class="fas fa-exclamation-triangle"></i>Search Not Page</span>
+			</div>
+			<div class="inline-box right-text title2">
+				<span>hotvue</span>
+			</div>
 			<hr/>
 			<h1>찾으시는 페이지는 존재하지 않는 페이지 입니다.</h1>
 			<p>자세한 사항은 관리자에게 문의하세요.</p>
@@ -10,7 +15,7 @@
 	</div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 $error_height: 300px;
 $content_width: 800px;
 $content_height: 300px;
@@ -28,8 +33,14 @@ $content_height: 300px;
 		font-family: ELAND_Nice_M, sans-serif;
 	}
 
-	span {
+	.title1 {
+		width: 400px;
 		text-align: left;
+	}
+
+	.title2 {
+		width: 400px;
+		text-align: right;
 	}
 
 	a {
@@ -37,6 +48,38 @@ $content_height: 300px;
 		text-decoration: none;
 		&:hover {
 			color: red;
+		}
+	}
+}
+
+@media screen and (max-width: 600px) /* 모바일 */
+{
+	$error_height: 300px;
+	$content_width: 400px;
+	$content_height: 150px;
+	.error {
+		width: 100%;
+		height: $error_height;
+
+		.content {
+			color: black;
+			text-align: left;
+			width: $content_width;
+			margin-top: 0;
+			margin-left: 0;
+			font-family: ELAND_Nice_M, sans-serif;
+		}
+
+		span {
+			text-align: left;
+		}
+
+		a {
+			color: #2c3e50;
+			text-decoration: none;
+			&:hover {
+				color: red;
+			}
 		}
 	}
 }
