@@ -34,12 +34,12 @@ $content_height: 300px;
 	}
 
 	.title1 {
-		width: 400px;
+		width: 50%;
 		text-align: left;
 	}
 
 	.title2 {
-		width: 400px;
+		width: 50%;
 		text-align: right;
 	}
 
@@ -68,18 +68,6 @@ $content_height: 300px;
 			margin-top: 0;
 			margin-left: 0;
 			font-family: ELAND_Nice_M, sans-serif;
-		}
-
-		span {
-			text-align: left;
-		}
-
-		a {
-			color: #2c3e50;
-			text-decoration: none;
-			&:hover {
-				color: red;
-			}
 		}
 	}
 }
