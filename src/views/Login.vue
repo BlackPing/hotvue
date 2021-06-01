@@ -18,7 +18,7 @@
 </template>
 
 <script>
-export default {
+export default { 
   name: 'HelloWorld',
   props: {
     msg: String
@@ -27,7 +27,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$error_height: 300px;
 $box_width: 300px;
 $box_height: 300px;
 .login {
@@ -46,7 +45,7 @@ $box_height: 300px;
 		background: none;
 		color: whiye;
 		font-size: 18px;
-		width:80%;
+		width: 80%;
 		margin: 0 10px;
 	}
 
@@ -63,7 +62,6 @@ $box_height: 300px;
 
 @media screen and (max-width: 600px) /* 모바일 */
 {
-	$error_height: 300px;
 	$content_width: 400px;
 	$content_height: 150px;
 }
