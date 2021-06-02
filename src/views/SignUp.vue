@@ -22,14 +22,14 @@
 					<input type="checkbox" name="" /><div class="text"><span>각종 이메일 수신에 동의합니다. (필수)</span></div>
 				</div>
 			</div>
-			<input class="btn" type="button" name="" value="Sign in">
+			<input class="btn" type="button" name="" value="Sign up">
 		</div>
 	</div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'SignUp',
   props: {
     msg: String
   }
