@@ -14,7 +14,17 @@ app.use('*', (req, res, next) => {
 	console.log(req.body);
 	console.log(req.query);
 	console.log(req.headers["user-agent"]);
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept"
+	);
 	next();
+});
+
+app.use('/test', (req, res, next) => {
+	const test = {a: 1234, b: 'string'};
+	res.send(test);
 });
 
 app.listen(config.Server.port, config.Server.ip, () => {

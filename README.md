@@ -32,6 +32,7 @@ npm install express [ 프로젝트 서버 ]
 npm install helmet [ 웹 보안 모듈 ]   
 npm install cookie-parser [ 백엔드 쿠키 모듈 ]   
 npm install mariadb [ MariaDB 모듈 ]   
+npm install axios [ HTTP 통신 모듈 ]   
 
 < Vue Package >
 Vuex

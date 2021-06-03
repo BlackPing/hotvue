@@ -3,8 +3,11 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
+import VueAxios from 'vue-axios'
+import axios from 'axios'
 
-Vue.config.productionTip = false
+Vue.use(VueAxios, axios);
+Vue.config.productionTip = false;
 Vue.config.errorHandler = (err, vm, info) => {
     console.log(err, vm, info);
 }
