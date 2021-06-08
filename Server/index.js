@@ -1,10 +1,28 @@
 const express = require('express');
 const config = require('./Config/Server_info');
 const path = require('path');
+const helmet = require('helmet');
 const fs = require('fs');
 const crypto = require('crypto');
 
 const app = express();
+
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.expectCt());
+app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts());
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
+app.use(helmet.xssFilter());
+app.use((req, res, next) => { 
+    res.header('X-XSS-Protection', 1);
+    res.header('Cache-Control', 'no-store');
+    res.header('Pragma', 'no-cache');
+    next() ;
+});
 
 console.time('Server ON Time');
 

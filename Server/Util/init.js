@@ -21,11 +21,11 @@ const init_func = {
 							RestAPI_URL = `${url}${API_URL}/${fileList[i].substring(0, fileList[i].indexOf('.js'))}`;
 							Router_JS = `.${RestAPI_URL}.js`;
 							console.log(RestAPI_URL, Router_JS);
+							// RestAPI Router
 							app.use(RestAPI_URL, require(Router_JS));
 						}
 					}
 	
-					// RestAPI Router
 					return;
 				}
 			}
