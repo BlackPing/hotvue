@@ -73,7 +73,7 @@ API_init = (path, url) => {
 
 console.log('################### REST API INIT ###################');
 API_init('./Server/API', '');
-
+console.log('root path: ' + __dirname + '../dist')
 app.use('/', express.static(path.join(__dirname, '../dist')));
 
 
