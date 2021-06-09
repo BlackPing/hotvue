@@ -78,6 +78,7 @@ app.use('/', express.static(path.join(__dirname, '../dist')));
 
 
 app.listen(config.Server.port, config.Server.ip, () => {
+	console.log('ip: ', config.Server.ip, 'port', config.Server.port)
 	console.timeEnd('Server ON Time');
 });
 
