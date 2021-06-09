@@ -78,18 +78,19 @@ API_init('./Server/API', '');
 console.log('root path: ' + path.join(__dirname, '../dist'))
 app.use('/', express.static(path.join(__dirname, '../dist')));
 
-config.Server.ssl ? sslServer() :
-app.listen(config.Server.port, config.Server.ip, () => {
-	console.log('ip: ', config.Server.ip, 'port', config.Server.port)
-	console.timeEnd('Server ON Time');
-})
-
 sslServer = () => {
 	http.createServer(app).listen(config.Server.port);
 	https.createServer(config.Server.cert_option, app).listen(443);
 	console.log('ip: ', config.Server.ip, 'port', config.Server.port)
 	console.timeEnd('SSL Server ON Time');
 }
+
+config.Server.ssl ? sslServer() :
+app.listen(config.Server.port, config.Server.ip, () => {
+	console.log('ip: ', config.Server.ip, 'port', config.Server.port)
+	console.timeEnd('Server ON Time');
+})
+
 
 process.on('uncaughtException', function (err) {
 	console.error((new Date).toUTCString() + ' uncaughtException:', err.message)
