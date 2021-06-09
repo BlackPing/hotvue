@@ -82,7 +82,8 @@ sslServer = () => {
 	http.createServer(app).listen(config.Server.port);
 	https.createServer(config.Server.cert_option, app).listen(443);
 	console.log('ip: ', config.Server.ip, 'port', config.Server.port)
-	console.timeEnd('SSL Server ON Time');
+	console.timeEnd('SSL Let’s Encrypt');
+	console.timeEnd('Server ON Time');
 }
 
 config.Server.ssl ? sslServer() :
