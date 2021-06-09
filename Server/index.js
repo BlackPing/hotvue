@@ -78,6 +78,8 @@ API_init('./Server/API', '');
 console.log('root path: ' + path.join(__dirname, '../dist'))
 app.use('/', express.static(path.join(__dirname, '../dist')));
 
+console.log(config.Server);
+
 config.Server.SSL ? sslServer() :
 app.listen(config.Server.port, config.Server.ip, () => {
 	console.log('ip: ', config.Server.ip, 'port', config.Server.port)
