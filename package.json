@@ -13,6 +13,7 @@
     "cookie-parser": "^1.4.5",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
+    "firebase": "^8.6.7",
     "helmet": "^4.6.0",
     "mariadb": "^2.5.3",
     "register-service-worker": "^1.7.1",

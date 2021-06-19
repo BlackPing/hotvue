@@ -33,6 +33,7 @@ npm install helmet [ 웹 보안 모듈 ]
 npm install cookie-parser [ 백엔드 쿠키 모듈 ]   
 npm install mariadb [ MariaDB 모듈 ]   
 npm install axios [ HTTP 통신 모듈 ]   
+npm install firebase [ FCM서비스 관련 모듈 ]   
 
 < Vue Package >
 Vuex
@@ -46,6 +47,21 @@ Vue 3 Snippets
    
 백엔드 Node.js express   
 API 기반 튜토리얼 프로젝트   
+
+< SSL >   
+Let’s Encrypt
+
+step.   
+1. yum install snapd   
+2. ln -s /var/lib/snapd/snap ./snap   
+3. systemctl enable --now snapd.socket   
+4. snap install core   
+5. snap refresh core   
+6. snap install --classic certbot   
+7. ln -s /snap/bin/certbot /usr/bin/certbot   
+8. certbot --version   
+9. certbot certonly
+
 
 \< Vue3 Guide >   
 https://v3.vuejs.org/guide/introduction.html#what-is-vue-js [ 영어 ]   

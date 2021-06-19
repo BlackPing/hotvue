@@ -11,7 +11,7 @@ router.use('*', (req, res, next) => {
 	next();
 });
 
-router.get('/_test', (req, res) => {
+router.post('/_test', (req, res) => {
     const data = {a:1234, b:'string'}
 	res.send(data)
 });

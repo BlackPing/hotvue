@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/about',
@@ -16,7 +16,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../views/About.vue')
+    component: () => import('../views/About.vue'),
+	meta: { authRequired: true }
   },
   {
     path: '/404',
@@ -60,6 +61,18 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+	console.log(to);
+	console.log(from);
+	if(to.matched.some((routeInfo) => { return routeInfo.meta.authRequired; }))
+	{
+		alert('로그인을 해주세요.');
+	} else {
+		console.log(`router success : ${to.path}`);
+		next();
+	}
 })
 
 export default router

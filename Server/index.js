@@ -23,25 +23,24 @@ app.use((req, res, next) => {
     res.header('X-XSS-Protection', 1);
     res.header('Cache-Control', 'no-store');
     res.header('Pragma', 'no-cache');
-    next() ;
-});
-
-console.time('Server ON Time');
-
-app.use('*', (req, res, next) => {
-	if(req.baseUrl === '/') {
-		console.log(req.baseUrl)
-		console.log(req.body);
-		console.log(req.query);
-		console.log(req.headers["user-agent"]);
+	
+	if(config.Server.ssl) {
+		if (req.secure) {
+			next();
+		} else {
+			res.redirect('https://' + req.headers.host + req.url);
+		}
+	} else {
 		res.header("Access-Control-Allow-Origin", "*");
 		res.header(
 			"Access-Control-Allow-Headers",
 			"Origin, X-Requested-With, Content-Type, Accept"
 		);
+		next();
 	}
-	next();
 });
+
+console.time('Server ON Time');
 
 API_init = (path, url) => {
 	fs.readdir(path, (err, fileList) => {
@@ -78,11 +77,36 @@ API_init('./Server/API', '');
 console.log('root path: ' + path.join(__dirname, '../dist'))
 app.use('/', express.static(path.join(__dirname, '../dist')));
 
+app.get('*', (req, res) => {
+	fs.readFile(path.join(__dirname, '../dist/index.html'), 'utf-8', (err, data) => {
+		if(err) {
+			res.send(err);
+		} else {
+			res.send(data);
+		}
+	});
+});
+
+// app.use('*', (req, res, next) => {
+// 	if(req.baseUrl === '/') {
+// 		console.log(req.baseUrl)
+// 		console.log(req.body);
+// 		console.log(req.query);
+// 		console.log(req.headers["user-agent"]);
+// 		res.header("Access-Control-Allow-Origin", "*");
+// 		res.header(
+// 			"Access-Control-Allow-Headers",
+// 			"Origin, X-Requested-With, Content-Type, Accept"
+// 		);
+// 	}
+// 	next();
+// });
+
 sslServer = () => {
 	http.createServer(app).listen(config.Server.port);
 	https.createServer(config.Server.cert_option, app).listen(443);
 	console.log('ip: ', config.Server.ip, 'port', config.Server.port)
-	console.timeEnd('SSL Let’s Encrypt');
+	console.log('SSL Let\’s Encrypt');
 	console.timeEnd('Server ON Time');
 }
 
@@ -91,7 +115,6 @@ app.listen(config.Server.port, config.Server.ip, () => {
 	console.log('ip: ', config.Server.ip, 'port', config.Server.port)
 	console.timeEnd('Server ON Time');
 })
-
 
 process.on('uncaughtException', function (err) {
 	console.error((new Date).toUTCString() + ' uncaughtException:', err.message)
